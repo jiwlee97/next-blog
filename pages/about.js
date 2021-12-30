@@ -1,17 +1,17 @@
 import NavBar from "../components/NavBar";
 
-function HomePage() {
-  console.log("[HomePage] render");
+const AboutPage = () => {
+  console.log("[AboutPage] render");
   return (
     <>
       <header>
         <NavBar />
       </header>
       <main>
-        <h1>My Blog</h1>
+        <h1>About</h1>
       </main>
     </>
   );
-}
+};
 
-export default HomePage;
+export default AboutPage;

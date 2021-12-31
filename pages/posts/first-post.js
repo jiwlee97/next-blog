@@ -1,12 +1,14 @@
+import { readFile } from "fs/promises";
 import Head from "next/head";
 
 export const getStaticProps = async () => {
+  console.log("[FirstPostPage] getStaticProps()");
+  const data = await readFile("content/posts/first-post.json", "utf8");
+  const post = JSON.parse(data);
+
   return {
     props: {
-      post: {
-        title: "Fist Post",
-        body: "My first post, as static props.",
-      },
+      post,
     },
   };
 };

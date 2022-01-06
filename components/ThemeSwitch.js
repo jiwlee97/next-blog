@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import DarkTheme from "./DarkTheme";
 
 const ThemeSwitch = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -14,6 +15,7 @@ const ThemeSwitch = () => {
       <button type="button" onClick={toggleTheme}>
         {darkMode ? "Light Mode" : "Dark Mode"}
       </button>
+      {darkMode && <DarkTheme />}
       <style jsx>{`
         button {
           background: none;

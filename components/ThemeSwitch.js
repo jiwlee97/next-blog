@@ -1,10 +1,16 @@
 import { useState, useCallback } from "react";
 import DarkTheme from "./DarkTheme";
 
-const ThemeSwitch = () => {
-  const [darkMode, setDarkMode] = useState(false);
+const loadDarkMode = () => {
+  const value = localStorage.getItem("darkMode");
+  return value === null ? false : JSON.parse(value);
+};
 
-  const toggleTheme = useCallback(() => {
+const ThemeSwitch = () => {
+  const [darkMode, setDarkMode] = useState(loadDarkMode);
+
+  const handleClick = useCallback(() => {
+    localStorage.setItem("darkMode", JSON.stringify(!darkMode));
     setDarkMode((prev) => !prev);
   }, []);
 
@@ -12,7 +18,7 @@ const ThemeSwitch = () => {
 
   return (
     <>
-      <button type="button" onClick={toggleTheme}>
+      <button type="button" onClick={handleClick}>
         {darkMode ? "Light Mode" : "Dark Mode"}
       </button>
       {darkMode && <DarkTheme />}
